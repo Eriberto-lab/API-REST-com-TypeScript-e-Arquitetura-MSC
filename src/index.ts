@@ -1,7 +1,7 @@
-import userModel from './models/user.model';
+import userService from './services/user.service';
 
 const main = async () => {
-  const users = await userModel.findAll();
+  const users = await userService.findAll();
   console.log(users);
 };
 
