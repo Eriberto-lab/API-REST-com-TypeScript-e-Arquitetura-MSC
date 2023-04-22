@@ -1,23 +1,22 @@
-import { User } from "../types/user";
-import userModel from "../models/user.model";
+import { User } from '../types/user';
+import userModel from '../models/user.model';
 
 const findAll = async (): Promise<User[]> => {
-    const user = await userModel.findAll();
+  const user = await userModel.findAll();
 
-    return user;
-}
+  return user;
+};
 
 const login = async (email: string, password: string): Promise<string> => {
-    const user =  await userModel.findByEmail(email);
+  const user = await userModel.findByEmail(email);
 
-    if(!user || password !== user.password) {
-        throw new Error('unauthorized')
-    }
-
-    return 'token';
-}
+  if (!user || password !== user.password) {
+    throw new Error('UNAUTHORIZED');
+  }
+  return 'token';
+};
 
 export default {
-    findAll,
-    login,
-}
+  findAll,
+  login,
+};
