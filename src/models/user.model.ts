@@ -14,6 +14,16 @@ const findAll = async (): Promise<User[]> => {
   return rows as User[];
 };
 
+const findByEmail = async (email: string): Promise<User | undefined> => {
+  const [rows] = await connection.execute<RowDataPacket[]>('SELECT * FROM users WHERE email = ?',[email]);
+
+  const [user] = rows;
+
+  return user as User | undefined;
+
+}
+
 export default {
   findAll,
+  findByEmail,
 };
